@@ -1,0 +1,32 @@
+﻿@* 因為view model而要把model 改成view model的引用 *@
+@*@model Vidly.Models.Movie*@
+@* ViewModel 內可以放多個model 這樣就匯集成一個在這裡呼叫 *@
+@model Vidly.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    //我覺得這裡很妙也很猛
+    //可以依照判斷給予 CSS class 
+    //當判斷為null h2在前端顯示的地方 就會是空白的呀~~~ 好猛
+    var cssClassName = Model.Customers.Count > 5 ? "popular" : null;
+}
+
+@* 這裡的Model只有一個 但有時候會需要另一個model 要怎麼辦? Answer:ViewModel *@
+<h2 class="@cssClassName">@Model.Movie.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <p>Customers 是0 所以沒有東西會顯示</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in @Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+
+}
+

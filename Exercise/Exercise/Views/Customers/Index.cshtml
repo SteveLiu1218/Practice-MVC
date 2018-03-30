@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Exercise.Models.Customers>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>我們沒有任何顧客</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>MemberShip Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in @Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    <td>@customer.MemberShipType.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

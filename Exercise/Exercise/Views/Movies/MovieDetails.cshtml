@@ -1,0 +1,16 @@
+﻿@model Exercise.Models.Movie
+@{
+    ViewBag.Title = "MovieDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>@Model.Name</h2>
+    <li>@Model.Genre</li>
+    <li>@Model.ReleaseDate.ToString("yyyy/MM/dd")</li>
+    <li>@Model.DateAdded.ToString("yyyy/MM/dd")</li>
+    <li>@Model.NumInStock</li>
+
+
+
+
+
