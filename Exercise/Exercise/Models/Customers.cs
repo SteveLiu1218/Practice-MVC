@@ -15,6 +15,8 @@ namespace Exercise.Models
         public bool IsSubscribedToNewsletter { get; set; }
         public MemberShipType MemberShipType { get; set; }
         public byte MemberShipTypeId { get; set; }
+
+        [Display(Name="Date of birthdate")]
         public DateTime? BirthdayDate { get; set; }
     }
 }
