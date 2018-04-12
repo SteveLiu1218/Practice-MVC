@@ -22,6 +22,7 @@ namespace Exercise.Models
     {
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MemberShipType> MemberShiptypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

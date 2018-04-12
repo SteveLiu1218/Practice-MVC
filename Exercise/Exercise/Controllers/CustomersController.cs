@@ -23,7 +23,12 @@ namespace Exercise.Controllers
         }
         public ActionResult New()
         {
-            return View();
+            var memberShipTypes = _context.MemberShiptypes.ToList();
+            var viewModel = new Exercise.ViewModels.NewCustomerViewModel
+            {
+                MemberShipTypes = memberShipTypes
+            };
+            return View(viewModel);
         }
         public ViewResult Index()
         {

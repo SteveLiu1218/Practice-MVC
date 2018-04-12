@@ -17,14 +17,14 @@ namespace Exercise.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        //protected override void Dispose(bool disposing)
-        //{
-        //    _context.Dispose();
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public ViewResult Index()
         {
             //var movies = GetMovies();
-            var movies = _context.Movies;
+            var movies = _context.Movies.ToList();
             return View(movies);
         }
         public ViewResult MovieDetails(int? id)
