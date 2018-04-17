@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Exercise.Models;
 using System.Data.Entity;
+using Exercise.ViewModels;
 
 namespace Exercise.Controllers
 {
@@ -24,11 +25,11 @@ namespace Exercise.Controllers
         public ActionResult New()
         {
             var memberShipTypes = _context.MemberShiptypes.ToList();
-            var viewModel = new Exercise.ViewModels.NewCustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 MemberShipTypes = memberShipTypes
             };
-            return View(viewModel);
+            return View("CustomerForm",viewModel);
         }
         public ViewResult Index()
         {
@@ -49,6 +50,44 @@ namespace Exercise.Controllers
                 return HttpNotFound();
             }
             return View(customer);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customers customers)
+        {
+            if (customers.Id == 0)
+            {
+                _context.Customers.Add(customers);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customers.Id);
+
+                //AutoMapper 的類別庫 需再Nuget下載
+                //Mapper.Map(customer,customerInDb)
+
+                customerInDb.Name = customers.Name;
+                customerInDb.BirthdayDate = customers.BirthdayDate;
+                customerInDb.MemberShipTypeId = customers.MemberShipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customers.IsSubscribedToNewsletter;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var custumers = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (custumers == null)
+            {
+                return HttpNotFound();
+            }
+            var viewmodel = new CustomerFormViewModel
+            {
+                Customers = custumers,
+                MemberShipTypes = _context.MemberShiptypes.ToList()
+            };
+            return View("CustomerForm",viewmodel);
         }
         //private IEnumerable<Customers> GetCustomers()
         //{

@@ -32,5 +32,12 @@ namespace Exercise.Controllers
             var movies = _context.Movies.SingleOrDefault(c => c.Id == id);
             return View(movies);
         }
+
+        public ActionResult EditMovies(int id)
+        {
+            var movies = _context.Movies.Single(c => c.Id == id);
+
+            return View();
+        }
     }
 }
