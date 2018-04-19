@@ -172,3 +172,7 @@ C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddMoviesData.re
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.csproj.GenerateResource.Cache
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.dll
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.pdb
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddGenreModel.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddMovieModelForGenreIdProp.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddGenreModelData.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.ChangeGenreIdTypetoByte.resources

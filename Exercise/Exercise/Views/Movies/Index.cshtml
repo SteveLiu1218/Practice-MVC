@@ -1,14 +1,17 @@
-﻿@model IEnumerable<Exercise.Models.Movie>
+﻿@model IEnumerable<Exercise.Models.Movie>           
 @{
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
+@Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+<br/>
 <table class="table table-bordered table-hover">
        <thead>
            <tr>
                <th>MovieName</th>
+               <th>觀看日期</th>
                <th>Gerne</th>
            </tr>
        </thead>
@@ -16,8 +19,9 @@
         @foreach (var movie in @Model)
         {
             <tr>
-                <td>@Html.ActionLink(movie.Name, "EditMovies", "Movies", new { id = movie.Id }, null)</td>                
-                <td>@movie.Genre</td>
+                <td>@Html.ActionLink(movie.Name, "EditMovies", "Movies", new { id = movie.Id }, null)</td>     
+                <td>@movie.ReleaseDate.ToString("yyyy/MM/dd")</td>           
+                <td>@movie.Genres.GenreType</td>
             </tr>
         }
     </tbody>

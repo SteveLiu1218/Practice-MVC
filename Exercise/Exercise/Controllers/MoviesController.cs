@@ -24,7 +24,7 @@ namespace Exercise.Controllers
         public ViewResult Index()
         {
             //var movies = GetMovies();
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.Include(c => c.Genres).ToList();
             return View(movies);
         }
         public ViewResult MovieDetails(int? id)
@@ -33,11 +33,57 @@ namespace Exercise.Controllers
             return View(movies);
         }
 
-        public ActionResult EditMovies(int id)
+        [HttpPost]
+        public ActionResult CreateMovie(Movie movie)
         {
-            var movies = _context.Movies.Single(c => c.Id == id);
-
-            return View();
+            //新增
+            if (movie.Id == 0)
+            {                
+                movie.DateAdded = DateTime.Now;                
+                _context.Movies.Add(movie);
+            }
+            //修改
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumInStock = movie.NumInStock;
+                movieInDb.ReleaseDate = movie.ReleaseDate;                
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            return RedirectToAction("Index", "Movies");
         }
+
+        public ActionResult EditMovie(int id)
+        {
+            var movies = _context.Movies.SingleOrDefault(c => c.Id == id);
+            if (movies == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("MoviesForm", movies);
+        }
+        public ViewResult New()
+        {
+            var genres = _context.Genres.ToList();
+
+            var viewModel = new ViewModels.NewMoviesViewModel
+            {
+                Genre = genres                
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
     }
 }
