@@ -55,6 +55,16 @@ namespace Exercise.Controllers
         [HttpPost]
         public ActionResult Save(Customers customers)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customers = customers,
+                    MemberShipTypes = _context.MemberShiptypes.ToList()
+                };
+                return View("CustomerForm",viewModel);
+            }
+
             if (customers.Id == 0)
             {
                 _context.Customers.Add(customers);
