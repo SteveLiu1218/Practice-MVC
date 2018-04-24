@@ -10,7 +10,7 @@ namespace Exercise.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="這裡可以更改ErrorMsg顯示再下面的")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -22,6 +22,7 @@ namespace Exercise.Models
         public byte MemberShipTypeId { get; set; }
 
         [Display(Name="Date of birthdate")]
+        [Min18YearsMember]
         public DateTime? BirthdayDate { get; set; }
     }
 }
