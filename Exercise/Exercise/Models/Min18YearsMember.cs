@@ -12,7 +12,7 @@ namespace Exercise.Models
         {
             var customer = (Customers)validationContext.ObjectInstance;
             //如果MemberShipTypeId 的Dropdownlist 如果沒選跟選第一個 就會return成功
-            if (customer.MemberShipTypeId == 1 || customer.MemberShipTypeId == 0)
+            if (customer.MemberShipTypeId == MemberShipType.PayaAsYouGo || customer.MemberShipTypeId == MemberShipType.Unknown)
             {
                 return ValidationResult.Success;
             }
