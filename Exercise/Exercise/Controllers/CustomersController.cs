@@ -27,6 +27,7 @@ namespace Exercise.Controllers
             var memberShipTypes = _context.MemberShiptypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customers = new Customers(),
                 MemberShipTypes = memberShipTypes
             };
             return View("CustomerForm",viewModel);
