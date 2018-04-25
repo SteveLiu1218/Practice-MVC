@@ -54,6 +54,7 @@ namespace Exercise.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customers customers)
         {
             if (!ModelState.IsValid)
