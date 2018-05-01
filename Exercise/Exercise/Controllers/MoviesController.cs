@@ -33,9 +33,20 @@ namespace Exercise.Controllers
             return View(movies);
         }
 
+        //新增電影區塊
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateMovie(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ViewModels.NewMoviesViewModel
+                {
+                    Movie = movie,
+                    Genre = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
             //新增
             if (movie.Id == 0)
             {                

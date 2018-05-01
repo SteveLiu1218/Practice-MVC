@@ -176,3 +176,6 @@ C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddGenreModel.re
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddMovieModelForGenreIdProp.resources
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddGenreModelData.resources
 C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.ChangeGenreIdTypetoByte.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.AddDataAnnotationsToMovieModel.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.ChangeReleaseDateToNull.resources
+C:\C#mvcProject\Exercise\Exercise\obj\Debug\Exercise.Migrations.BacktoReleaseDateNull.resources
