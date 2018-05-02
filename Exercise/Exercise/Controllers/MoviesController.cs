@@ -40,9 +40,8 @@ namespace Exercise.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new ViewModels.NewMoviesViewModel
+                var viewModel = new ViewModels.NewMoviesViewModel(movie)
                 {
-                    Movie = movie,
                     Genre = _context.Genres.ToList()
                 };
                 return View("MovieForm", viewModel);
@@ -81,6 +80,10 @@ namespace Exercise.Controllers
             {
                 return HttpNotFound();
             }
+            var viewModel = new ViewModels.NewMoviesViewModel(movies)
+            {
+                Genre = _context.Genres.ToList()
+            };
 
             return View("MoviesForm", movies);
         }
