@@ -38,6 +38,7 @@ namespace Exercise.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMovie(Movie movie)
         {
+            //驗證失敗
             if (!ModelState.IsValid)
             {
                 var viewModel = new ViewModels.NewMoviesViewModel(movie)

@@ -7,6 +7,7 @@
 <h2>Create Movie</h2>
 @using (Html.BeginForm("CreateMovie", "Movies")) //這個using 就等於 </form> Bginform 就等於 <form> 第一個參數是 action 第二個是controller
 {
+    @Html.ValidationSummary()
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
@@ -30,6 +31,13 @@
         @Html.HiddenFor(m => m.Id)
         @Html.AntiForgeryToken()
         <button type="submit" class="btn btn-primary"> Save </button>
+}
+@* 這段的用意是讓如果使用者在田表的時候key錯 按下save 會傳到server 在判定Model的問題 *@
+@* 可用F12 NetWork看得知，但如果加了這段就會是只有在Client端做檢視  *@
+@* 當然也可以用Javascript or Jquery 來寫 但也可以用這種方法 *@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
 

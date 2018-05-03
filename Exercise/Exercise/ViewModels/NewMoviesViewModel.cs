@@ -46,7 +46,7 @@ namespace Exercise.ViewModels
 
         public NewMoviesViewModel()
         {
-
+            Id = 0;
         }
 
         public NewMoviesViewModel(Movie movie)
